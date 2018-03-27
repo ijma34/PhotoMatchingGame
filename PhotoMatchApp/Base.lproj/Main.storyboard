@@ -31,7 +31,7 @@
                                     <color key="titleColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JeN-5q-een" kind="show" identifier="toRegVC" id="QiZ-rW-W2e"/>
+                                    <segue destination="JeN-5q-een" kind="modal" identifier="toRegVC" id="QiZ-rW-W2e"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U21-RE-Qh6">
@@ -39,7 +39,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="ゲーム開始"/>
                                 <connections>
-                                    <segue destination="tbe-Vr-vEk" kind="show" identifier="toAuthVC" id="OT2-0P-nLE"/>
+                                    <segue destination="tbe-Vr-vEk" kind="modal" identifier="toAuthVC" id="OT2-0P-nLE"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RjH-tt-UzC">
@@ -83,7 +83,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dse-q3-Z2X"/>
                     <connections>
-                        <outlet property="authButton" destination="U21-RE-Qh6" id="K08-ji-oHM"/>
+                        <outlet property="authButton" destination="U21-RE-Qh6" id="lwB-Za-4Um"/>
                         <outlet property="regButton" destination="3QY-zx-0dK" id="0aq-kL-p2C"/>
                         <outlet property="titleImage1" destination="14d-JE-oah" id="Y0g-Mw-29t"/>
                         <outlet property="titleImage2" destination="RjH-tt-UzC" id="z7f-CE-sXG"/>
@@ -97,7 +97,7 @@
         <!--RegVC-->
         <scene sceneID="1si-De-BIR">
             <objects>
-                <viewController storyboardIdentifier="regVC" title="RegVC" id="JeN-5q-een" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="regVC" title="RegVC" id="JeN-5q-een" customClass="Reg" customModule="PhotoMatchApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kVr-un-E5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +226,7 @@
         <!--AuthVC-->
         <scene sceneID="3nO-t3-h7D">
             <objects>
-                <viewController storyboardIdentifier="authVC" title="AuthVC" id="tbe-Vr-vEk" customClass="Auth" customModule="PhotoMatchApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authVC" title="AuthVC" id="tbe-Vr-vEk" customClass="Auth" customModule="PhotoMatchApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F2U-Iz-FAb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -246,10 +246,6 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26w-mG-ChZ">
                                                 <rect key="frame" x="150" y="0.0" width="225" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="Tni-88-KlX"/>
-                                                    <constraint firstAttribute="width" constant="225" id="zV9-yh-maQ"/>
-                                                </constraints>
                                                 <string key="text">同じ写真を
 選んでください</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -258,19 +254,16 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="26w-mG-ChZ" firstAttribute="leading" secondItem="kgh-jz-SE6" secondAttribute="trailing" id="9qM-6W-r2u"/>
-                                            <constraint firstAttribute="bottom" secondItem="26w-mG-ChZ" secondAttribute="bottom" id="DQP-Ah-xVI"/>
+                                            <constraint firstAttribute="width" constant="375" id="E9S-IY-hfR"/>
                                             <constraint firstAttribute="bottom" secondItem="26w-mG-ChZ" secondAttribute="bottom" id="GpT-OO-3jO"/>
                                             <constraint firstItem="26w-mG-ChZ" firstAttribute="top" secondItem="PkY-Hr-pwG" secondAttribute="top" id="H0c-lY-ofb"/>
                                             <constraint firstItem="26w-mG-ChZ" firstAttribute="leading" secondItem="kgh-jz-SE6" secondAttribute="trailing" id="Hai-IS-bLx"/>
                                             <constraint firstAttribute="trailing" secondItem="26w-mG-ChZ" secondAttribute="trailing" id="fY9-4c-mqz"/>
-                                            <constraint firstAttribute="trailing" secondItem="26w-mG-ChZ" secondAttribute="trailing" id="izB-pL-pWe"/>
-                                            <constraint firstItem="26w-mG-ChZ" firstAttribute="top" secondItem="PkY-Hr-pwG" secondAttribute="top" id="ksG-kD-Nfa"/>
                                         </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UHi-yL-jbi">
                                         <rect key="frame" x="0.0" y="150" width="375" height="497"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wJK-D2-tMP">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -322,9 +315,9 @@
                         <viewLayoutGuide key="safeArea" id="5MO-n1-GBO"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="UHi-yL-jbi" id="ssc-EV-jSE"/>
-                        <outlet property="targetImage" destination="kgh-jz-SE6" id="6Ti-Io-KtY"/>
-                        <segue destination="uGB-dP-wjt" kind="show" id="w7b-A2-g4Q"/>
+                        <outlet property="collectionView" destination="UHi-yL-jbi" id="9gB-uy-yJ0"/>
+                        <outlet property="targetImage" destination="kgh-jz-SE6" id="e3X-Mf-dPJ"/>
+                        <segue destination="uGB-dP-wjt" kind="modal" identifier="toAuthCheckVC" id="w7b-A2-g4Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBD-ZL-4KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -351,7 +344,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="決定"/>
                                 <connections>
-                                    <segue destination="jc7-tm-oUp" kind="show" id="hbL-Vb-ybX"/>
+                                    <segue destination="jc7-tm-oUp" kind="modal" identifier="toAuthAnsVC" id="hbL-Vb-ybX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5d-n8-Zul">
@@ -361,7 +354,7 @@
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tbe-Vr-vEk" kind="show" id="BYA-aa-Uyl"/>
+                                    <segue destination="tbe-Vr-vEk" kind="modal" id="BYA-aa-Uyl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -376,6 +369,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g7r-1z-O6o"/>
                     </view>
+                    <connections>
+                        <outlet property="BackButton" destination="o5d-n8-Zul" id="v5F-Wb-aFb"/>
+                        <outlet property="OKButton" destination="fVC-2g-Xsz" id="lqF-d2-uo5"/>
+                        <outlet property="imageView" destination="bAw-6o-Bgt" id="ZzC-Ik-PHz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBu-rR-vE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -394,7 +392,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="次へ"/>
                                 <connections>
-                                    <segue destination="tbe-Vr-vEk" kind="show" id="0To-lF-Wwj"/>
+                                    <segue destination="tbe-Vr-vEk" kind="modal" identifier="toAuthVC" id="0To-lF-Wwj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbA-Ec-RS2">
@@ -404,7 +402,7 @@
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="kJ2-2e-OVY"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="toTitleVC" id="p7W-KT-beI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="correct!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdt-m7-jdC">
@@ -425,6 +423,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V0e-ZH-MOU"/>
                     </view>
+                    <connections>
+                        <outlet property="ans" destination="gdt-m7-jdC" id="FE2-gh-4Ph"/>
+                        <outlet property="finishButton" destination="WbA-Ec-RS2" id="zSA-cp-Atc"/>
+                        <outlet property="nextButton" destination="rVt-Jq-sdA" id="b5d-Ev-OH7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8I-uJ-rnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -432,6 +435,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="w7b-A2-g4Q"/>
         <segue reference="BYA-aa-Uyl"/>
     </inferredMetricsTieBreakers>
 </document>

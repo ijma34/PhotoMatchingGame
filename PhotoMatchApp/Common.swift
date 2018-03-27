@@ -11,6 +11,8 @@ import UIKit
 
 /* グローバルな変数群 */
 
+var flag: Bool = true
+
 // 100枚の画像の名前の配列
 var imageNameArray: [String] = [
     "match1", "match2", "match3", "match4", "match5",

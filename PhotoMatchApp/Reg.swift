@@ -6,4 +6,17 @@
 //  Copyright © 2018年 Masashi Kudo. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class Reg: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
