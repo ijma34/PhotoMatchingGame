@@ -13,7 +13,7 @@
         <!--TitleVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Title" title="TitleVC" id="BYZ-38-t0r" customClass="ViewController" customModule="PhotoMatchApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="titleVC" title="TitleVC" id="BYZ-38-t0r" customClass="ViewController" customModule="PhotoMatchApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,7 @@
         <!--RegVC-->
         <scene sceneID="1si-De-BIR">
             <objects>
-                <viewController storyboardIdentifier="Reg" title="RegVC" id="JeN-5q-een" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="regVC" title="RegVC" id="JeN-5q-een" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kVr-un-E5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +226,7 @@
         <!--AuthVC-->
         <scene sceneID="3nO-t3-h7D">
             <objects>
-                <viewController storyboardIdentifier="Auth" title="AuthVC" id="tbe-Vr-vEk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authVC" title="AuthVC" id="tbe-Vr-vEk" customClass="Auth" customModule="PhotoMatchApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F2U-Iz-FAb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -322,6 +322,8 @@
                         <viewLayoutGuide key="safeArea" id="5MO-n1-GBO"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="UHi-yL-jbi" id="ssc-EV-jSE"/>
+                        <outlet property="targetImage" destination="kgh-jz-SE6" id="6Ti-Io-KtY"/>
                         <segue destination="uGB-dP-wjt" kind="show" id="w7b-A2-g4Q"/>
                     </connections>
                 </viewController>
@@ -332,7 +334,7 @@
         <!--AuthCheckVC-->
         <scene sceneID="47N-bo-fuJ">
             <objects>
-                <viewController storyboardIdentifier="AuthCheck" title="AuthCheckVC" id="uGB-dP-wjt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authCheckVC" title="AuthCheckVC" id="uGB-dP-wjt" customClass="AuthCheck" customModule="PhotoMatchApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JLg-mc-whw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,7 +384,7 @@
         <!--AuthAnsVC-->
         <scene sceneID="Ijq-Cx-IiP">
             <objects>
-                <viewController storyboardIdentifier="AuthAns" title="AuthAnsVC" id="jc7-tm-oUp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authAnsVC" title="AuthAnsVC" id="jc7-tm-oUp" customClass="AuthAns" customModule="PhotoMatchApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LNU-LD-Cj8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -430,6 +432,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OT2-0P-nLE"/>
+        <segue reference="BYA-aa-Uyl"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,7 @@
 		77BD72552069DA03007239CE /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD72542069DA03007239CE /* Common.swift */; };
 		77BD72572069DA5B007239CE /* AuthCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD72562069DA5B007239CE /* AuthCheck.swift */; };
 		77BD72592069DA69007239CE /* RegCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD72582069DA69007239CE /* RegCheck.swift */; };
+		77BD725B206A2375007239CE /* AuthAns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BD725A206A2375007239CE /* AuthAns.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		77BD72542069DA03007239CE /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		77BD72562069DA5B007239CE /* AuthCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCheck.swift; sourceTree = "<group>"; };
 		77BD72582069DA69007239CE /* RegCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegCheck.swift; sourceTree = "<group>"; };
+		77BD725A206A2375007239CE /* AuthAns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAns.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				77485FD82068ABEB0099AF57 /* ViewController.swift */,
 				77BD72502069D9DF007239CE /* Auth.swift */,
 				77BD72562069DA5B007239CE /* AuthCheck.swift */,
+				77BD725A206A2375007239CE /* AuthAns.swift */,
 				77BD72522069D9F8007239CE /* Reg.swift */,
 				77BD72582069DA69007239CE /* RegCheck.swift */,
 				77BD72542069DA03007239CE /* Common.swift */,
@@ -155,6 +158,7 @@
 				77485FD92068ABEB0099AF57 /* ViewController.swift in Sources */,
 				77BD72592069DA69007239CE /* RegCheck.swift in Sources */,
 				77485FD72068ABEB0099AF57 /* AppDelegate.swift in Sources */,
+				77BD725B206A2375007239CE /* AuthAns.swift in Sources */,
 				77BD72532069D9F8007239CE /* Reg.swift in Sources */,
 				77BD72552069DA03007239CE /* Common.swift in Sources */,
 				77BD72512069D9DF007239CE /* Auth.swift in Sources */,

@@ -34,3 +34,24 @@ var imageNameArray: [String] = [
     "match91", "match92", "match93", "match94", "match95",
     "match96", "match97", "match98", "match99", "match100",
 ]
+
+
+class Common: NSObject {
+    
+    /*表示画像をシャッフルする関数*/
+    class func shuffleImage(){
+        var str: String? = nil
+        var num1: Int
+        var num2: Int
+        
+        num1 = Int(arc4random_uniform(100))
+        num2 = Int(arc4random_uniform(100))
+        
+        str = imageNameArray[num1]
+        
+        imageNameArray[num1] = imageNameArray[num2]
+        imageNameArray[num2] = str!
+    }
+    
+    
+}

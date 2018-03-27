@@ -1,14 +1,15 @@
 //
-//  AuthCheck.swift
+//  AuthAns.swift
 //  PhotoMatchApp
 //
 //  Created by Masashi Kudo on 2018/03/27.
 //  Copyright © 2018年 Masashi Kudo. All rights reserved.
 //
 
+
 import UIKit
 
-class AuthCheck: UIViewController {
+class AuthAns: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,4 +24,3 @@ class AuthCheck: UIViewController {
     
 }
 
-import Foundation
