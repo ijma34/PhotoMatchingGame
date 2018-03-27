@@ -19,20 +19,43 @@ class ViewController: UIViewController {
     /* ストーリーボードとの紐付け */
     @IBOutlet weak var authButton: UIButton!
     @IBOutlet weak var regButton: UIButton!
+    @IBOutlet weak var titleImage1: UIImageView!
+    @IBOutlet weak var titleImage2: UIImageView!
+    @IBOutlet weak var titleImage3: UIImageView!
+    
+    /* 変数群 */
+    var titleImageNum1: Int!
+    var titleImageNum2: Int!
+    var titleImageNum3: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // ボタンの動作を定義
         let tapAuthGesture = UITapGestureRecognizer(target: self, action: #selector(tapAuthHandler(_:)))
         let tapRegGesture = UITapGestureRecognizer(target: self, action: #selector(tapRegHandler(_:)))
-        
         authButton.addGestureRecognizer(tapAuthGesture)
         regButton.addGestureRecognizer(tapRegGesture)
+        
+        // タイトル画像を設定
+        setTitleImage()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /* タイトル画像を設定 */
+    func setTitleImage(){
+        titleImageNum1 = Int(arc4random_uniform(100))
+        titleImageNum2 = Int(arc4random_uniform(100))
+        titleImageNum3 = Int(arc4random_uniform(100))
+        
+        //タイトル画像を表示
+        titleImage1.image = UIImage(named: imageNameArray[titleImageNum1])
+        titleImage2.image = UIImage(named: imageNameArray[titleImageNum2])
+        titleImage3.image = UIImage(named: imageNameArray[titleImageNum3])
     }
     
     /* ゲーム開始ボタンを押した時の動作 */

@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Matching Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIR-7d-ARk">
-                                <rect key="frame" x="33" y="150" width="309" height="36"/>
+                                <rect key="frame" x="33" y="120" width="309" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QY-zx-0dK">
-                                <rect key="frame" x="55" y="456" width="102" height="42"/>
+                                <rect key="frame" x="55" y="485" width="102" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="本人登録">
                                     <color key="titleColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,22 +35,49 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U21-RE-Qh6">
-                                <rect key="frame" x="193" y="456" width="127" height="42"/>
+                                <rect key="frame" x="193" y="485" width="127" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="ゲーム開始"/>
                                 <connections>
                                     <segue destination="tbe-Vr-vEk" kind="show" identifier="toAuthVC" id="OT2-0P-nLE"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RjH-tt-UzC">
+                                <rect key="frame" x="35" y="311" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2v0-X0-xDW"/>
+                                    <constraint firstAttribute="width" constant="150" id="jAe-m5-lMo"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fyR-ov-xMr">
+                                <rect key="frame" x="190" y="311" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="OnS-Uh-NfG"/>
+                                    <constraint firstAttribute="width" constant="150" id="euO-VX-nGS"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="14d-JE-oah">
+                                <rect key="frame" x="112" y="181" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="gKa-zq-kDI"/>
+                                    <constraint firstAttribute="width" constant="150" id="lxv-nH-Kaj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qIR-7d-ARk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="130" id="5Xq-gV-cMy"/>
-                            <constraint firstItem="U21-RE-Qh6" firstAttribute="top" secondItem="qIR-7d-ARk" secondAttribute="bottom" constant="270" id="6RC-l8-ju1"/>
+                            <constraint firstItem="RjH-tt-UzC" firstAttribute="top" secondItem="14d-JE-oah" secondAttribute="bottom" constant="30" id="C7J-TA-yun"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3QY-zx-0dK" secondAttribute="bottom" constant="140" id="ExX-1l-a4m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="U21-RE-Qh6" secondAttribute="bottom" constant="140" id="JPB-Vj-HK5"/>
+                            <constraint firstItem="14d-JE-oah" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Lgl-7D-3UQ"/>
+                            <constraint firstItem="14d-JE-oah" firstAttribute="top" secondItem="qIR-7d-ARk" secondAttribute="bottom" constant="25" id="QAR-qb-9Kl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U21-RE-Qh6" secondAttribute="trailing" constant="55" id="S6b-xg-YtZ"/>
+                            <constraint firstItem="fyR-ov-xMr" firstAttribute="top" secondItem="14d-JE-oah" secondAttribute="bottom" constant="30" id="VvY-rA-sC1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fyR-ov-xMr" secondAttribute="trailing" constant="35" id="hHj-gI-MvB"/>
                             <constraint firstItem="qIR-7d-ARk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iWb-0N-dRT"/>
+                            <constraint firstItem="qIR-7d-ARk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="kC9-GP-lLA"/>
+                            <constraint firstItem="RjH-tt-UzC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="lyR-OC-VpC"/>
                             <constraint firstItem="3QY-zx-0dK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="mrO-JE-Qah"/>
-                            <constraint firstItem="3QY-zx-0dK" firstAttribute="top" secondItem="qIR-7d-ARk" secondAttribute="bottom" constant="270" id="oEW-ZZ-bRh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -58,6 +85,9 @@
                     <connections>
                         <outlet property="authButton" destination="U21-RE-Qh6" id="K08-ji-oHM"/>
                         <outlet property="regButton" destination="3QY-zx-0dK" id="0aq-kL-p2C"/>
+                        <outlet property="titleImage1" destination="14d-JE-oah" id="Y0g-Mw-29t"/>
+                        <outlet property="titleImage2" destination="RjH-tt-UzC" id="z7f-CE-sXG"/>
+                        <outlet property="titleImage3" destination="fyR-ov-xMr" id="Uhb-Z1-5dR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
