@@ -39,6 +39,9 @@ class ViewController: UIViewController {
         
         // タイトル画像を設定
         setTitleImage()
+        // タイトル画像のアニメーション
+        imageAnimation()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +59,21 @@ class ViewController: UIViewController {
         titleImage1.image = UIImage(named: imageNameArray[titleImageNum1])
         titleImage2.image = UIImage(named: imageNameArray[titleImageNum2])
         titleImage3.image = UIImage(named: imageNameArray[titleImageNum3])
+    }
+    
+    /* タイトル画像のアニメーション */
+    func imageAnimation(){
+        let layer1: CALayer = titleImage1.layer
+        let layer2: CALayer = titleImage2.layer
+        let layer3: CALayer = titleImage3.layer
+        let animation = CABasicAnimation(keyPath:"transform.rotation")
+        animation.toValue = Double.pi / 2.0
+        animation.duration = 1.0            // 0.5秒で90度回転
+        animation.repeatCount = MAXFLOAT    // 無限に回転
+        animation.isCumulative = true;      // 効果を累積
+        layer1.add(animation, forKey: "ImageViewRotation")
+        layer2.add(animation, forKey: "ImageViewRotation")
+        layer3.add(animation, forKey: "ImageViewRotation")
     }
     
     /* ゲーム開始ボタンを押した時の動作 */
