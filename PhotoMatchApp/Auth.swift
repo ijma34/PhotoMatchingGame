@@ -9,7 +9,7 @@
 import UIKit
 import CoreMotion
 
-class Auth: UIViewController {
+class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     /* ストーリーボードとの紐付け */
     @IBOutlet weak var targetImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -24,9 +24,9 @@ class Auth: UIViewController {
     /* 以下メインプログラム */
     override func viewDidLoad() {
         super.viewDidLoad()
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
 //        self.collectionView.isUserInteractionEnabled = true
 //        self.view.isUserInteractionEnabled = true
 
@@ -64,69 +64,69 @@ class Auth: UIViewController {
 //        }
 //    }
 //
-//    /* １つのセクションに含まれているセルの数を返すメソッド */
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return imageNameArray.count     // 写真データの個数を返す
-//    }
-//
-//    /* 対象のインデックスに対応するUICollectionViewCellインスタンスを返す */
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        //Identifierに対応するUICollectionViewCellインスタンスを取得（この場合は"ImageCell"）
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
-//
-//        let imageView = cell.viewWithTag(1) as! UIImageView
-//        imageView.image = UIImage(named: imageNameArray[indexPath.item])
-//
-//        return cell
-//    }
-//
-//    /* セルが選択された場合 */
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.collectionView.delaysContentTouches = false
-//        // タップで選択した画像をindexPath情報から探す
-//        selectedImage = UIImage(named: imageNameArray[indexPath.item])
-//
-//        // 正解画像かをジャッジしておく
-//        if indexPath.item == targetImageNum {
-//            judge = true
-//        } else {
-//            judge = false
-//        }
-//
-//        if selectedImage != nil {
-//            // toAuthCheckVCへ遷移するためにSegueを呼び出す
-//            performSegue(withIdentifier: "toAuthCheckVC", sender: nil)
-//        }
-//    }
-//
-//    /* Segue準備 */
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-//        if(segue.identifier == "toAuthCheckVC"){
-//            let AuthCheckVC: AuthCheck = (segue.destination as? AuthCheck)!
-//            // 選択画像を遷移先の画面に表示
-//            AuthCheckVC.Img = selectedImage
-//            // 正解不正解の情報を伝える
-//            AuthCheckVC.correct = judge
-//        }
-//    }
-//
-//    /* 対象のインデックス番号に対応するセルの大きさを返す */
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        // 横２列のタイルを表示（stroke）
-//        let width = collectionView.bounds.size.width / 2
-//        return CGSize(width: width, height: width)
-//    }
-//
-//    /* 横のマージンの値を返す */
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0.0
-//    }
-//
-//    /* 縦のマージンの値を返す */
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0.0
-//    }
-//
+    /* １つのセクションに含まれているセルの数を返すメソッド */
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageNameArray.count     // 写真データの個数を返す
+    }
+
+    /* 対象のインデックスに対応するUICollectionViewCellインスタンスを返す */
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //Identifierに対応するUICollectionViewCellインスタンスを取得（この場合は"AuthImageCell"）
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AuthImageCell", for: indexPath)
+
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.image = UIImage(named: imageNameArray[indexPath.item])
+
+        return cell
+    }
+
+    /* セルが選択された場合 */
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.collectionView.delaysContentTouches = false
+        // タップで選択した画像をindexPath情報から探す
+        selectedImage = UIImage(named: imageNameArray[indexPath.item])
+
+        // 正解画像かをジャッジしておく
+        if indexPath.item == targetImageNum {
+            judge = true
+        } else {
+            judge = false
+        }
+
+        if selectedImage != nil {
+            // toAuthCheckVCへ遷移するためにSegueを呼び出す
+            performSegue(withIdentifier: "toAuthCheckVC", sender: nil)
+        }
+    }
+
+    /* Segue準備 */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if(segue.identifier == "toAuthCheckVC"){
+            let AuthCheckVC: AuthCheck = (segue.destination as? AuthCheck)!
+            // 選択画像を遷移先の画面に表示
+            AuthCheckVC.Img = selectedImage
+            // 正解不正解の情報を伝える
+            AuthCheckVC.correct = judge
+        }
+    }
+
+    /* 対象のインデックス番号に対応するセルの大きさを返す */
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // 横２列のタイルを表示（stroke）
+        let width = collectionView.bounds.size.width / 2
+        return CGSize(width: width, height: width)
+    }
+
+    /* 横のマージンの値を返す */
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+
+    /* 縦のマージンの値を返す */
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

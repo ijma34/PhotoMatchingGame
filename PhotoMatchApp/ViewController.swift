@@ -41,9 +41,13 @@ class ViewController: UIViewController {
         
         // タイトル画像を設定
         setTitleImage()
-        // タイトル画像のアニメーション
-        imageAnimation()
         
+        // タイトル画像のアニメーション
+        if(titleFlag){
+            imageAnimation()
+        }
+        
+        titleFlag = false
     }
 
     override func didReceiveMemoryWarning() {

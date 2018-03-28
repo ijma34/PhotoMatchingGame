@@ -12,6 +12,7 @@ import UIKit
 /* グローバルな変数群 */
 
 var flag: Bool = true
+var titleFlag: Bool = true
 
 // 100枚の画像の名前の配列
 var imageNameArray: [String] = [
