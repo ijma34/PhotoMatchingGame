@@ -23,6 +23,8 @@ class AuthCheck: UIViewController {
         super.viewDidLoad()
         // 前画面で選択された画像を表示
         imageView.image = Img
+        //アスペクト比を揃える
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
     }
     
     /* 決定ボタンをタップした時の動作 */
@@ -52,4 +54,3 @@ class AuthCheck: UIViewController {
     
 }
 
-import Foundation

@@ -13,6 +13,7 @@ import UIKit
 
 var flag: Bool = true
 var titleFlag: Bool = true
+var gameCount: Int = 0
 
 // 100枚の画像の名前の配列
 var imageNameArray: [String] = [

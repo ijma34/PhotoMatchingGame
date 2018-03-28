@@ -9,9 +9,10 @@
 //
 // todo
 // ・タッチ情報の取得
-// ・レイアウト問題
-// ・コレクションビュー問題
-// 0327 画面遷移の動作完了
+// ・レイアウト問題 0328_ok
+// ・コレクションビュー問題 0328_ok
+// ・戻る遷移で情報の保持
+// ・画面遷移の動作完了 0327_ok
 
 
 import UIKit
@@ -48,6 +49,7 @@ class ViewController: UIViewController {
         }
         
         titleFlag = false
+        gameCount = 0
     }
 
     override func didReceiveMemoryWarning() {

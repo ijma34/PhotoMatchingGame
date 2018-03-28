@@ -1,19 +1,19 @@
 //
-//  AuthAns.swift
+//  RegAns.swift
 //  PhotoMatchApp
 //
-//  Created by Masashi Kudo on 2018/03/27.
+//  Created by Masashi Kudo on 2018/03/28.
 //  Copyright © 2018年 Masashi Kudo. All rights reserved.
 //
 
-
 import UIKit
 
-class AuthAns: UIViewController {
+class RegAns: UIViewController {
+    
     /* ストーリーボードの紐付け */
     @IBOutlet weak var ans: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var retirementButton: UIButton!
     
     /* 変数、定数などの準備 */
     var correct: Bool!  // 選択画像の正誤情報
@@ -34,7 +34,7 @@ class AuthAns: UIViewController {
     func nextHandler (_ sender: UITapGestureRecognizer) {
         print("次へ")
         flag = false
-        performSegue(withIdentifier: "toAuthVC", sender: nil)
+        performSegue(withIdentifier: "toRegVC", sender: nil)
     }
     
     /* 終了ボタンをタップした時の動作 */
@@ -55,4 +55,5 @@ class AuthAns: UIViewController {
     }
     
 }
+
 

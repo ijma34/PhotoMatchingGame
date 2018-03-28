@@ -14,7 +14,7 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
     @IBOutlet weak var targetImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    /* 変数、定数などの準備 */
+    /* ローカル変数、定数などの準備 */
     var previewInteraction: UIPreviewInteraction!
     var targetImageNum: Int!        //ターゲット画像のインデックス番号
     var judge: Bool!                //選択画像の正誤判定
@@ -36,6 +36,10 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
         }
         // ターゲット画像を設定
         setTarget()
+        
+        // ゲームカウントを加算
+        gameCount += 1
+        
     }
     
     /* ターゲット画像を設定 */

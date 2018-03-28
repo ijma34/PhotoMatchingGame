@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		772D91F7206B608A00E735D6 /* RegAns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D91F6206B608A00E735D6 /* RegAns.swift */; };
 		77485FD72068ABEB0099AF57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77485FD62068ABEB0099AF57 /* AppDelegate.swift */; };
 		77485FD92068ABEB0099AF57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77485FD82068ABEB0099AF57 /* ViewController.swift */; };
 		77485FDC2068ABEB0099AF57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77485FDA2068ABEB0099AF57 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		772D91F6206B608A00E735D6 /* RegAns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegAns.swift; sourceTree = "<group>"; };
 		77485FD32068ABEB0099AF57 /* PhotoMatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77485FD62068ABEB0099AF57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77485FD82068ABEB0099AF57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				77BD725A206A2375007239CE /* AuthAns.swift */,
 				77BD72522069D9F8007239CE /* Reg.swift */,
 				77BD72582069DA69007239CE /* RegCheck.swift */,
+				772D91F6206B608A00E735D6 /* RegAns.swift */,
 				77BD72542069DA03007239CE /* Common.swift */,
 				77485FD62068ABEB0099AF57 /* AppDelegate.swift */,
 				77485FDA2068ABEB0099AF57 /* Main.storyboard */,
@@ -162,6 +165,7 @@
 				77BD72532069D9F8007239CE /* Reg.swift in Sources */,
 				77BD72552069DA03007239CE /* Common.swift in Sources */,
 				77BD72512069D9DF007239CE /* Auth.swift in Sources */,
+				772D91F7206B608A00E735D6 /* RegAns.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
