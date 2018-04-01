@@ -28,20 +28,26 @@ class RegAns: UIViewController {
             ans.text = "incorrect!"
             ans.textColor = UIColor.red
         }
+        // ボタンの動作を定義
+        let tapNextGesture = UITapGestureRecognizer(target: self, action: #selector(tapNextHandler(_:)))
+        let tapRetirementGesture = UITapGestureRecognizer(target: self, action: #selector(tapRetirementHandler(_:)))
+        nextButton.addGestureRecognizer(tapNextGesture)
+        retirementButton.addGestureRecognizer(tapRetirementGesture)
+        
     }
     
     /* 次へボタンをタップした時の動作 */
-    func nextHandler (_ sender: UITapGestureRecognizer) {
+    @objc func tapNextHandler (_ sender: UITapGestureRecognizer) {
         print("次へ")
         flag = false
         performSegue(withIdentifier: "toRegVC", sender: nil)
     }
     
-    /* 終了ボタンをタップした時の動作 */
-    func finishHandler (_ sender: UITapGestureRecognizer) {
+    /* 中断ボタンをタップした時の動作 */
+    @objc func tapRetirementHandler (_ sender: UITapGestureRecognizer) {
         print("タイトルへ")
         flag = false
-        performSegue(withIdentifier: "toTitleVC", sender: nil)
+        performSegue(withIdentifier: "toTitleRegVC", sender: nil)
     }
     
     /*Segue準備*/

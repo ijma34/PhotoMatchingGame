@@ -28,17 +28,22 @@ class AuthAns: UIViewController {
             ans.text = "incorrect!"
             ans.textColor = UIColor.red
         }
+        // ボタンの動作を定義
+        let tapNextGesture = UITapGestureRecognizer(target: self, action: #selector(tapNextHandler(_:)))
+        let tapFinishGesture = UITapGestureRecognizer(target: self, action: #selector(tapFinishHandler(_:)))
+        nextButton.addGestureRecognizer(tapNextGesture)
+        finishButton.addGestureRecognizer(tapFinishGesture)
     }
     
     /* 次へボタンをタップした時の動作 */
-    func nextHandler (_ sender: UITapGestureRecognizer) {
+    @objc func tapNextHandler (_ sender: UITapGestureRecognizer) {
         print("次へ")
         flag = false
         performSegue(withIdentifier: "toAuthVC", sender: nil)
     }
     
     /* 終了ボタンをタップした時の動作 */
-    func finishHandler (_ sender: UITapGestureRecognizer) {
+    @objc func tapFinishHandler (_ sender: UITapGestureRecognizer) {
         print("タイトルへ")
         flag = false
         performSegue(withIdentifier: "toTitleVC", sender: nil)

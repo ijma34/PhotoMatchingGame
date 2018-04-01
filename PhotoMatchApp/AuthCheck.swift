@@ -23,18 +23,23 @@ class AuthCheck: UIViewController {
         super.viewDidLoad()
         // 前画面で選択された画像を表示
         imageView.image = Img
-        //アスペクト比を揃える
+        // アスペクト比を揃える
         imageView.contentMode = UIViewContentMode.scaleAspectFit
+        // ボタンの動作を定義
+        let tapOkGesture = UITapGestureRecognizer(target: self, action: #selector(tapOkHandler(_:)))
+        let tapBackGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackHandler(_:)))
+        OKButton.addGestureRecognizer(tapOkGesture)
+        BackButton.addGestureRecognizer(tapBackGesture)
     }
     
     /* 決定ボタンをタップした時の動作 */
-    func tapOkHandler(_ sender: UITapGestureRecognizer) {
+    @objc func tapOkHandler(_ sender: UITapGestureRecognizer) {
         print("決定")
         performSegue(withIdentifier: "toAuthAnsVC", sender: nil)   // 次の画面へ
     }
     
     /* 戻るボタンをタップした時の動作 */
-    func tapBackHandler(_ sender: UITapGestureRecognizer) {
+    @objc func tapBackHandler(_ sender: UITapGestureRecognizer) {
         print("戻る")
         self.dismiss(animated: false, completion: nil)   // 前画面へ
     }
