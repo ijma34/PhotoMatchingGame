@@ -15,6 +15,40 @@ var flag: Bool = true
 var titleFlag: Bool = true
 var gameCount: Int = 0
 
+// タッチデータ収集用
+var strokeTouch: UITouch? = nil     //ストローク中のタッチ情報を格納
+var maximumForce: CGFloat? = nil    //圧力値の最大値を格納
+
+//スクロール間のインターバルに関する変数
+//初期値は-10.0、タッチキャンセルなどの異常があった場合は-1.0
+var interStrokeStart: Double = -10.0    //ストローク間のインターバル開始時間
+var interStrokeEnd: Double = -10.0      //ストローク間のインターバル終了時間
+var interStrokeTime: Double = -10.0     //ストローク間のインターバル時間
+
+//タッチ情報を保持する構造体
+struct touchValues {
+    var data = [CGFloat]()  //データを格納する配列
+    var start: CGFloat = 0  //開始地点データ
+    var t20: CGFloat = 0    //20%地点データ
+    var t50: CGFloat = 0    //50%地点データ
+    var t80: CGFloat = 0    //80%地点データ
+    var end: CGFloat = 0    //終了地点データ
+}
+
+//タッチ情報を格納
+var touchF = touchValues()  //圧力の情報を保持
+var touchX = touchValues()  //x座標の情報を保持
+var touchY = touchValues()  //y座標の情報を保持
+var touchTime = [Double]()  //時間情報を保持
+
+//配列の位置を格納
+var sCount: Int = 0     //1ストロークの要素数
+var sCount0: Int = 0    //0%地点
+var sCount20: Int = 0   //20%地点
+var sCount50: Int = 0   //50%地点
+var sCount80: Int = 0   //80%地点
+var sCount100: Int = 0  //100%地点
+
 // 100枚の画像の名前の配列
 var imageNameArray: [String] = [
     "match1", "match2", "match3", "match4", "match5",
@@ -42,7 +76,7 @@ var imageNameArray: [String] = [
 
 class Common: NSObject {
     
-    /*表示画像をシャッフルする関数*/
+    /* 表示画像をシャッフルする関数 */
     class func shuffleImage(){
         var str: String? = nil
         var num1: Int
@@ -55,6 +89,48 @@ class Common: NSObject {
         
         imageNameArray[num1] = imageNameArray[num2]
         imageNameArray[num2] = str!
+    }
+    
+    /* 現在時間を返す関数 */
+    class func nowTime() -> Double{
+        return NSDate().timeIntervalSince1970
+    }
+    
+    /* 時間の差を返す関数（t1:begin < t2:end） */
+    class func differenceTime(t1: Double, t2: Double) -> Double {
+        return (t2 - t1)
+    }
+    
+    /* 値をリセットする関数 */
+    class func resetValue(){
+        sCount = 0
+//        dragCount = 0
+//        tapOrStroke = 1
+//        strokePartDistance = 0
+//        strokeDistance = 0
+//        lineDistance = 0
+//        strokeAverage = 0
+//        stroke20 = 0
+//        stroke50 = 0
+//        stroke80 = 0
+//        strokeAngle = 0
+//        strokeTime = 0
+//        strokeRatio = 0
+        interStrokeStart = 0.0
+        interStrokeEnd = 0.0
+        interStrokeTime = 0.0
+        //1019 add
+//        maxForce = 0
+//        sumForce = 0
+//        aveForce = 0
+    }
+    
+    /* 配列をリセットする関数 */
+    class func arrayRemove () {
+        touchF.data.removeAll()
+        touchX.data.removeAll()
+        touchY.data.removeAll()
+        touchTime.removeAll()
     }
     
     

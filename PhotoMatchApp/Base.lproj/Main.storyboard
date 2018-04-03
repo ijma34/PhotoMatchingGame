@@ -306,6 +306,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBD-ZL-4KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <gestureRecognizer id="nWo-iw-3Jk" customClass="ForceTouchGestureRecognizer" customModule="PhotoMatchApp" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1336.8" y="-222.63868065967017"/>
         </scene>

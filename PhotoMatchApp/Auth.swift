@@ -26,6 +26,13 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        //圧力ジェスチャー認識機構
+        let forceTouchRecognizer = ForceTouchGestureRecognizer()
+        
+        //ボタンとviewにジェスチャーを実装
+        collectionView.addGestureRecognizer(forceTouchRecognizer)
+        view.addGestureRecognizer(forceTouchRecognizer)
 
 //        self.collectionView.isUserInteractionEnabled = true
 //        self.view.isUserInteractionEnabled = true
