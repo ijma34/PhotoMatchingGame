@@ -49,6 +49,86 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
         
     }
     
+    /* コレクションビュー上でドラッグ開始 */
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        //        print("drag_begin")
+        dragFlag = true
+        
+        //カウントの引き継ぎ
+        if(!strokeFlag){
+            moveCount = touchX.data.count-1
+            strokeFlag = true
+        }
+        moveCount += 1
+        
+        //タッチ情報と時間情報を追加
+        let loc = collectionView.panGestureRecognizer.location(in: view)
+        //        let dragForce = dragTouch?.force
+        let dragForce = (strokeTouch?.force)! / maximumForce!
+        
+        touchF.data.append(dragForce)
+        touchX.data.append(loc.x)
+        touchY.data.append(loc.y)
+        touchTime.append(Common.nowTime())
+        print("wbd")
+        print(moveCount)
+    }
+    
+    /*コレクションビュー上でドラッグ中*/
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        //        print("drag: \(dragCount)")
+        if(dragFlag){
+            moveCount = moveCount + 1
+            
+            //タッチ情報と時間情報を追加
+            let loc = collectionView.panGestureRecognizer.location(in: view)
+            //        let dragForce = dragTouch?.force
+            let dragForce = (strokeTouch?.force)! / maximumForce!
+            
+            touchF.data.append(dragForce)
+            touchX.data.append(loc.x)
+            touchY.data.append(loc.y)
+            touchTime.append(Common.nowTime())
+//            print("ds")
+            print(moveCount)
+        }
+        
+    }
+    
+    /*コレクションビュー上でドラッグ終了*/
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        print("drag_end")
+        dragFlag = false
+        
+        //タッチ情報と時間情報を追加
+        let loc = collectionView.panGestureRecognizer.location(in: view)
+        //        let dragForce = dragTouch?.force
+        let dragForce = (strokeTouch?.force)! / maximumForce!
+        
+        //        print(dragForce!)
+        
+        touchF.data.append(dragForce)
+        touchX.data.append(loc.x)
+        touchY.data.append(loc.y)
+        touchTime.append(Common.nowTime())
+        
+        //タッチ情報の処理
+//        Common.touchDataProcessing()
+        
+        //ログの書き込み
+//        LogWrite.touchWrite()
+        
+        //カウントのリセット
+        Common.arrayRemove()
+        Common.resetValue()
+        
+        //ストロークインターバルの開始時間を記録
+        interStrokeStart = Common.nowTime()
+    }
+    
     /* ターゲット画像を設定 */
     func setTarget(){
         targetImageNum = Int(arc4random_uniform(100))                           // 乱数生成

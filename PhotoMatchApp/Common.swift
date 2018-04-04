@@ -18,6 +18,9 @@ var gameCount: Int = 0
 // タッチデータ収集用
 var strokeTouch: UITouch? = nil     //ストローク中のタッチ情報を格納
 var maximumForce: CGFloat? = nil    //圧力値の最大値を格納
+var moveCount: Int = 0
+var strokeFlag: Bool = false        //タップとドラッグの切り替え
+var dragFlag: Bool = false          //ドラッグ終了のフラグ
 
 //スクロール間のインターバルに関する変数
 //初期値は-10.0、タッチキャンセルなどの異常があった場合は-1.0

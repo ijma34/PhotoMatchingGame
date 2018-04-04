@@ -43,6 +43,7 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
 
         //一応タッチ情報を初期化
         Common.arrayRemove()
+        moveCount = 0
         
         if let touch = touches.first {
             let loc = touch.location(in: view)
@@ -56,7 +57,7 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             
             sCount = touchF.data.count
             
-//            dragFlag = false
+            strokeFlag = false
             print("begin")
         }
     }
@@ -76,7 +77,8 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             touchTime.append(Common.nowTime())
             
             sCount100 = touchF.data.count
-            
+            moveCount += 1
+            print(moveCount)
         }
     }
     
