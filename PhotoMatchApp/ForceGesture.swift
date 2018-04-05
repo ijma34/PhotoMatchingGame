@@ -16,14 +16,17 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
     var point1 = CGPoint(x: 0, y: 0)
     var point2 = CGPoint(x: 0, y: 0)
     
-    /*タッチ開始*/
+    /* タッチ開始 */
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesBegan(touches, with: event)
+        
+        //前回までのタッチ情報を初期化
+        Common.arrayRemove()
+        moveCount = 0
         
         //タッチ情報をグローバル変数に代入
         strokeTouch = touches.first
         maximumForce = strokeTouch?.maximumPossibleForce
-        //        print(maximumForce)
         
         //タッチインターバルの終了時間を記録
         interStrokeEnd = Common.nowTime()
@@ -39,15 +42,10 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             //初回
             interStrokeTime = 0.0
         }
-        //        print("interval: \(interStrokeTime)")
-
-        //一応タッチ情報を初期化
-        Common.arrayRemove()
-        moveCount = 0
         
         if let touch = touches.first {
+            
             let loc = touch.location(in: view)
-            //            force = touch.force
             force = touch.force / maximumForce!
             point = loc
             touchF.data.append(force)
@@ -56,19 +54,18 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             touchTime.append(Common.nowTime())
             
             sCount = touchF.data.count
-            
             strokeFlag = false
-            print("begin")
+            print("fg_b: \(moveCount)")
         }
     }
     
-    /*タッチ中*/
+    
+    /* タッチ中 */
     override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesMoved(touches, with: event)
         
         if let touch = touches.first {
             let loc = touch.location(in: view)
-            //            force = touch.force
             force = touch.force / maximumForce!
             point = loc
             touchF.data.append(force)
@@ -76,13 +73,14 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             touchY.data.append((point?.y)!)
             touchTime.append(Common.nowTime())
             
-            sCount100 = touchF.data.count
+            sCount = touchF.data.count
             moveCount += 1
-            print(moveCount)
+            print("fg_m: \(moveCount)")
         }
     }
     
-    /*タッチ終了*/
+    
+    /* タッチ終了 */
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesEnded(touches, with: event)
         
@@ -90,7 +88,6 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             //            Common.endTime()
             
             let loc = touch.location(in: view)
-            //            force = touch.force
             force = touch.force / maximumForce!
             point = loc
             touchF.data.append(force)
@@ -99,14 +96,14 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             touchTime.append(Common.nowTime())
             
             sCount = touchF.data.count
-            
-            print("end")
+            moveCount += 1
+            print("fg_e: \(moveCount)")
         }
         
         if self.state == .possible {
             
-//            //タッチ情報の処理
-//            Common.touchDataProcessing()
+            //タッチ情報の処理
+            Common.touchDataProcessing()
 //
 //            //ログの書き込み
 //            LogWrite.touchWrite()

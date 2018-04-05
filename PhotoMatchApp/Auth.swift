@@ -30,30 +30,22 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
         //圧力ジェスチャー認識機構
         let forceTouchRecognizer = ForceTouchGestureRecognizer()
         
-        //ボタンとviewにジェスチャーを実装
+        //collectionviewとviewにジェスチャーを実装
         collectionView.addGestureRecognizer(forceTouchRecognizer)
         view.addGestureRecognizer(forceTouchRecognizer)
-
-//        self.collectionView.isUserInteractionEnabled = true
-//        self.view.isUserInteractionEnabled = true
 
         // 画像を100回シャッフル
         for _ in 1...100 {
             Common.shuffleImage()
         }
-        // ターゲット画像を設定
-        setTarget()
-        
-        // ゲームカウントを加算
-        gameCount += 1
-        
+        setTarget()             // ターゲット画像を設定
+        gameCount += 1          // ゲームカウントを加算
     }
+    
     
     /* コレクションビュー上でドラッグ開始 */
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-        //        print("drag_begin")
-        dragFlag = true
+        dragFlag = true         //ドラッグ開始
         
         //カウントの引き継ぎ
         if(!strokeFlag){
@@ -63,60 +55,55 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
         moveCount += 1
         
         //タッチ情報と時間情報を追加
-        let loc = collectionView.panGestureRecognizer.location(in: view)
-        //        let dragForce = dragTouch?.force
+        let loc = (strokeTouch)!.location(in: view)
         let dragForce = (strokeTouch?.force)! / maximumForce!
-        
+
         touchF.data.append(dragForce)
         touchX.data.append(loc.x)
         touchY.data.append(loc.y)
         touchTime.append(Common.nowTime())
-        print("wbd")
-        print(moveCount)
+        print("wbd: \(moveCount)")
     }
     
-    /*コレクションビュー上でドラッグ中*/
+    
+    /* コレクションビュー上でドラッグ中 */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        //        print("drag: \(dragCount)")
         if(dragFlag){
-            moveCount = moveCount + 1
+            moveCount += 1
             
             //タッチ情報と時間情報を追加
-            let loc = collectionView.panGestureRecognizer.location(in: view)
-            //        let dragForce = dragTouch?.force
+            let loc = (strokeTouch)!.location(in: view)
             let dragForce = (strokeTouch?.force)! / maximumForce!
-            
+
             touchF.data.append(dragForce)
             touchX.data.append(loc.x)
             touchY.data.append(loc.y)
             touchTime.append(Common.nowTime())
-//            print("ds")
-            print(moveCount)
+            print("ds: \(moveCount)")
         }
         
     }
     
-    /*コレクションビュー上でドラッグ終了*/
+    /* コレクションビュー上でドラッグ終了 */
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
-        print("drag_end")
-        dragFlag = false
+        moveCount += 1
+        print("de: \(moveCount)")
+        dragFlag = false            //ドラッグ終了
         
         //タッチ情報と時間情報を追加
-        let loc = collectionView.panGestureRecognizer.location(in: view)
-        //        let dragForce = dragTouch?.force
+        let loc = strokeTouch!.location(in: view)
         let dragForce = (strokeTouch?.force)! / maximumForce!
-        
-        //        print(dragForce!)
         
         touchF.data.append(dragForce)
         touchX.data.append(loc.x)
         touchY.data.append(loc.y)
         touchTime.append(Common.nowTime())
+        Common.checkValue()
         
         //タッチ情報の処理
-//        Common.touchDataProcessing()
+        Common.touchDataProcessing()
         
         //ログの書き込み
 //        LogWrite.touchWrite()

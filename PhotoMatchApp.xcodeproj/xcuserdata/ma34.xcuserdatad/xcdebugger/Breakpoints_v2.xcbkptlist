@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoMatchApp/ViewController.swift"
-            timestampString = "544256287.841675"
+            filePath = "PhotoMatchApp/Common.swift"
+            timestampString = "544614582.751044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
+            landmarkName = "checkValue()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
