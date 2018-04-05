@@ -25,6 +25,11 @@ class RegCheck: UIViewController {
         imageView.image = Img
         //アスペクト比を揃える
         imageView.contentMode = UIViewContentMode.scaleAspectFit
+        //圧力ジェスチャー認識機構
+        let forceTouchRecognizer = ForceTouchGestureRecognizer()
+        //viewにジェスチャーを実装
+        view.addGestureRecognizer(forceTouchRecognizer)
+        
         // ボタンの動作を定義
         let tapOkGesture = UITapGestureRecognizer(target: self, action: #selector(tapOkHandler(_:)))
         let tapBackGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackHandler(_:)))

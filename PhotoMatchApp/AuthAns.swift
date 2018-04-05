@@ -28,6 +28,10 @@ class AuthAns: UIViewController {
             ans.text = "incorrect!"
             ans.textColor = UIColor.red
         }
+        //圧力ジェスチャー認識機構
+        let forceTouchRecognizer = ForceTouchGestureRecognizer()
+        //viewにジェスチャーを実装
+        view.addGestureRecognizer(forceTouchRecognizer)
         // ボタンの動作を定義
         let tapNextGesture = UITapGestureRecognizer(target: self, action: #selector(tapNextHandler(_:)))
         let tapFinishGesture = UITapGestureRecognizer(target: self, action: #selector(tapFinishHandler(_:)))
