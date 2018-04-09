@@ -16,19 +16,19 @@ class RegCheck: UIViewController {
     @IBOutlet weak var BackButton: UIButton!
     
     /* 変数、定数などの準備 */
-    var Img: UIImage!   //選択画像
-    var correct: Bool!  //選択画像の正誤情報
-    var targetImageNum: Int!
+    var Img: UIImage!           //選択画像
+    var correct: Bool!          //選択画像の正誤情報
+    var targetImageNum: Int!    // 正解画像の番号
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 前画面で選択された画像を表示
         imageView.image = Img
-        //アスペクト比を揃える
+        // アスペクト比を揃える
         imageView.contentMode = UIViewContentMode.scaleAspectFit
-        //圧力ジェスチャー認識機構
+        // 圧力ジェスチャー認識機構
         let forceTouchRecognizer = ForceTouchGestureRecognizer()
-        //viewにジェスチャーを実装
+        // viewにジェスチャーを実装
         view.addGestureRecognizer(forceTouchRecognizer)
         
         // ボタンの動作を定義
@@ -47,14 +47,14 @@ class RegCheck: UIViewController {
     /* 戻るボタンをタップした時の動作 */
     @objc func tapBackHandler(_ sender: UITapGestureRecognizer) {
         print("戻る")
-        performSegue(withIdentifier: "toRegVC", sender: nil)      //前の画面へ
+        performSegue(withIdentifier: "toRegVC", sender: nil)      // 前の画面へ
     }
     
     /* Segue準備 */
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if(segue.identifier == "toRegAnsVC"){
             let RegAnsVC: RegAns = (segue.destination as? RegAns)!
-            RegAnsVC.correct = correct    // 正解不正解の情報を伝える
+            RegAnsVC.correct = correct              // 正解不正解の情報を伝える
         }
         if(segue.identifier == "toRegVC"){
             let RegVC: Reg = (segue.destination as? Reg)!
@@ -65,8 +65,5 @@ class RegCheck: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 }
-

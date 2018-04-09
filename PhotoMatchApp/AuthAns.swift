@@ -10,6 +10,7 @@
 import UIKit
 
 class AuthAns: UIViewController {
+    
     /* ストーリーボードの紐付け */
     @IBOutlet weak var ans: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -55,13 +56,9 @@ class AuthAns: UIViewController {
     
     /*Segue準備*/
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 }
-

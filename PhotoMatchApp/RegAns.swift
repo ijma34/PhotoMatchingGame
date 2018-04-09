@@ -28,9 +28,9 @@ class RegAns: UIViewController {
             ans.text = "incorrect!"
             ans.textColor = UIColor.red
         }
-        //圧力ジェスチャー認識機構
+        // 圧力ジェスチャー認識機構
         let forceTouchRecognizer = ForceTouchGestureRecognizer()
-        //viewにジェスチャーを実装
+        // viewにジェスチャーを実装
         view.addGestureRecognizer(forceTouchRecognizer)
         // ボタンの動作を定義
         let tapNextGesture = UITapGestureRecognizer(target: self, action: #selector(tapNextHandler(_:)))
@@ -56,14 +56,9 @@ class RegAns: UIViewController {
     
     /*Segue準備*/
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 }
-
-

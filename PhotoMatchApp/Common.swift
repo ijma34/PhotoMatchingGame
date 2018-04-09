@@ -201,18 +201,18 @@ class Common: NSObject {
         touchY.end = touchY.data[sCount100]
         
         /* データを処理 */
-        //ストローク時間
+        // ストローク時間
         strokeTime = CGFloat(Common.differenceTime(t1: touchTime[sCount0], t2: touchTime[sCount100]))
         
         /* 速度 */
-        //平均
+        // 平均
         point1.x = touchX.start
         point1.y = touchY.start
         point2.x = touchX.end
         point2.y = touchY.end
         strokeAverage = Common.strokeSpeed(p1: point1, p2: point2, t1: touchTime[sCount0], t2: touchTime[sCount100])
         
-        //20%
+        // 20%地点
         if(sCount20 > 0){
             point1.x = touchX.data[sCount20-1]
             point1.y = touchY.data[sCount20-1]
@@ -221,7 +221,7 @@ class Common: NSObject {
             stroke20 = Common.strokeSpeed(p1: point1, p2: point2, t1: touchTime[sCount20-1], t2: touchTime[sCount20])
         }
         
-        //50%
+        // 50%地点
         if(sCount50 > 0){
             point1.x = touchX.data[sCount50-1]
             point1.y = touchY.data[sCount50-1]
@@ -230,7 +230,7 @@ class Common: NSObject {
             stroke50 = Common.strokeSpeed(p1: point1, p2: point2, t1: touchTime[sCount50-1], t2: touchTime[sCount50])
         }
         
-        //80%
+        // 80%地点
         if(sCount80 > 0){
             point1.x = touchX.data[sCount80-1]
             point1.y = touchY.data[sCount80-1]
@@ -239,7 +239,7 @@ class Common: NSObject {
             stroke80 = Common.strokeSpeed(p1: point1, p2: point2, t1: touchTime[sCount80-1], t2: touchTime[sCount80])
         }
         
-        //速度平均が0.1未満ならタップ
+        // 速度平均が0.1未満ならタップ
         if(0.1 > strokeAverage){
             tapOrStroke = 0
             tapCount += 1
@@ -253,7 +253,7 @@ class Common: NSObject {
         }
         
         /* ストローク軌道 */
-        //直線距離と角度
+        // 直線距離と角度
         point1.x = touchX.start
         point1.y = touchY.start
         point2.x = touchX.end
@@ -261,12 +261,12 @@ class Common: NSObject {
         lineDistance = Common.moveDistance(p1: point1, p2: point2)
         strokeAngle = Common.angle(p1: point1, p2: point2)
         
-        //ストロークの方向が下向きの場合
+        // ストロークの方向が下向きの場合
         if(strokeAngle > 180){
             strokeDirection = 2
         }
         
-        //総距離
+        // 総距離
         for i in 0 ..< sCount100 {
             point1.x = touchX.data[i]
             point1.y = touchY.data[i]
@@ -276,7 +276,7 @@ class Common: NSObject {
             strokeDistance += strokePartDistance
         }
         
-        //ストロークの比（stroke/line）
+        // ストロークの比（stroke/line）
         if(strokeDistance > 0.1) {
             strokeRatio = strokeDistance / lineDistance
         } else {
@@ -293,7 +293,6 @@ class Common: NSObject {
                 aveForce = sumForce / CGFloat(sCount100)
             }
         }
-        
     }
     
     /* 値をリセットする関数 */
@@ -331,5 +330,4 @@ class Common: NSObject {
         //breakpointを入れる
         return
     }
-    
 }

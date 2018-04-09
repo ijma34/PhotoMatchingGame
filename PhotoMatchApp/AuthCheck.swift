@@ -16,9 +16,9 @@ class AuthCheck: UIViewController {
     @IBOutlet weak var BackButton: UIButton!
     
     /* 変数、定数などの準備 */
-    var Img: UIImage!   //選択画像
-    var correct: Bool!  //選択画像の正誤情報
-    var targetImageNum: Int!
+    var Img: UIImage!           // 選択画像
+    var correct: Bool!          // 選択画像の正誤情報
+    var targetImageNum: Int!    // 正解画像の番号
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,9 @@ class AuthCheck: UIViewController {
         imageView.image = Img
         // アスペクト比を揃える
         imageView.contentMode = UIViewContentMode.scaleAspectFit
-        //圧力ジェスチャー認識機構
+        // 圧力ジェスチャー認識機構
         let forceTouchRecognizer = ForceTouchGestureRecognizer()
-        //viewにジェスチャーを実装
+        // viewにジェスチャーを実装
         view.addGestureRecognizer(forceTouchRecognizer)
         // ボタンの動作を定義
         let tapOkGesture = UITapGestureRecognizer(target: self, action: #selector(tapOkHandler(_:)))
@@ -58,14 +58,11 @@ class AuthCheck: UIViewController {
         if(segue.identifier == "toAuthVC"){
             let AuthVC: Auth = (segue.destination as? Auth)!
             AuthVC.targetImageNum = targetImageNum   // 正解不正解の情報を伝える
-            AuthVC.unwindFlag = true                 // 前の画面にフラグを立てる
+            AuthVC.unwindFlag = true                 // 前の画面のフラグを立てる
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 }
-

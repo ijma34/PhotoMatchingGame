@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         // ボタンの動作を定義
         let tapAuthGesture = UITapGestureRecognizer(target: self, action: #selector(tapAuthHandler(_:)))
         let tapRegGesture = UITapGestureRecognizer(target: self, action: #selector(tapRegHandler(_:)))
@@ -48,8 +47,6 @@ class ViewController: UIViewController {
         
         // タイトル画像を設定
         setTitleImage()
-        
-        // タイトル画像のアニメーション
         if(titleFlag){
             imageAnimation()
         }
@@ -60,7 +57,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /* タイトル画像を設定 */
@@ -69,7 +65,6 @@ class ViewController: UIViewController {
         titleImageNum2 = Int(arc4random_uniform(100))
         titleImageNum3 = Int(arc4random_uniform(100))
         
-        //タイトル画像を表示
         titleImage1.image = UIImage(named: imageNameArray[titleImageNum1])
         titleImage2.image = UIImage(named: imageNameArray[titleImageNum2])
         titleImage3.image = UIImage(named: imageNameArray[titleImageNum3])
@@ -104,9 +99,7 @@ class ViewController: UIViewController {
     
     /* segue準備 */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
     }
-
-
 }
 

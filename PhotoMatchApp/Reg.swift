@@ -35,20 +35,19 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
         collectionView.addGestureRecognizer(forceTouchRecognizer)
         view.addGestureRecognizer(forceTouchRecognizer)
         
+        // チェック画面から戻ってきた場合
         if(!unwindFlag){
             // 画像を100回シャッフル
             for _ in 1...100 {
                 Common.shuffleImage()
             }
-            // ゲームカウントを加算
-            gameCount += 1
+            gameCount += 1  // ゲームカウントを加算
         }
-        // ターゲット画像を設定
-        setTarget()
+        setTarget()         // ターゲット画像を設定
         // ゲームカウントの表示
         gameLabelText = String(gameCount) + " / 7 "
         gameLabel.text = gameLabelText
-        unwindFlag = false
+        unwindFlag = false  // 戻る遷移のフラグを戻す
     }
     
     /* コレクションビュー上でドラッグ開始 */
@@ -60,15 +59,15 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
             moveCount = touchX.data.count-1
             strokeFlag = true
         }
-        moveCount += 1
+        moveCount += 1          // カウントの加算
         
         //タッチ情報と時間情報を追加
         let loc = (strokeTouch)!.location(in: view)
         let dragForce = (strokeTouch?.force)! / maximumForce!
         
-        touchF.data.append(dragForce)
         touchX.data.append(loc.x)
         touchY.data.append(loc.y)
+        touchF.data.append(dragForce)
         touchTime.append(Common.nowTime())
         print("wbd: \(moveCount)")
     }
@@ -84,9 +83,9 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
             let loc = (strokeTouch)!.location(in: view)
             let dragForce = (strokeTouch?.force)! / maximumForce!
             
-            touchF.data.append(dragForce)
             touchX.data.append(loc.x)
             touchY.data.append(loc.y)
+            touchF.data.append(dragForce)
             touchTime.append(Common.nowTime())
             print("ds: \(moveCount)")
         }
@@ -108,13 +107,10 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
         touchX.data.append(loc.x)
         touchY.data.append(loc.y)
         touchTime.append(Common.nowTime())
-        Common.checkValue()
+//        Common.checkValue()
         
-        //タッチ情報の処理
-        Common.touchDataProcessing()
-        
-        //ログの書き込み
-        //        LogWrite.touchWrite()
+        Common.touchDataProcessing()    //タッチ情報の処理
+//        LogWrite.touchWrite()           //ログの書き込み
         
         //カウントのリセット
         Common.arrayRemove()
@@ -127,35 +123,10 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
     /* ターゲット画像を設定 */
     func setTarget(){
         if(!unwindFlag){
-            targetImageNum = Int(arc4random_uniform(100))                           // 乱数生成
+            targetImageNum = Int(arc4random_uniform(100))                       // 乱数生成
         }
         targetImage.image = UIImage(named: imageNameArray[targetImageNum])      // ターゲットの画像を表示
     }
-    
-//    @IBAction func unwindToReg(segue: UIStoryboardSegue) {
-//
-//    }
-    
-//        /* タップジェスチャー */
-//        @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
-//            //collectionviewでの座標
-//            let collectionLocation = sender.location(in: collectionView)
-//
-//            //collectionview座標からインデックスパスを入手し、インデックスパスに対応するセルを選択
-//            if let indexPath = collectionView.indexPathForItem(at: collectionLocation) {
-//                //画面のタッチ操作を一時停止
-////                self.collectionView.isUserInteractionEnabled = false
-////                self.view.isUserInteractionEnabled = false
-//
-//                //選択されたセル
-//                collectionView(collectionView, didSelectItemAt: indexPath)
-//
-//                //画面のタッチ操作を再開
-////                self.collectionView.isUserInteractionEnabled = true
-////                self.view.isUserInteractionEnabled = true
-//            }
-//        }
-    
     
     /* １つのセクションに含まれているセルの数を返すメソッド */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -224,7 +195,5 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 }

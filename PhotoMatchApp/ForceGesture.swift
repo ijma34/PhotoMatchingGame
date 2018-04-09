@@ -48,9 +48,9 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             let loc = touch.location(in: view)
             force = touch.force / maximumForce!
             point = loc
-            touchF.data.append(force)
             touchX.data.append((point?.x)!)
             touchY.data.append((point?.y)!)
+            touchF.data.append(force)
             touchTime.append(Common.nowTime())
             
             sCount = touchF.data.count
@@ -68,9 +68,9 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             let loc = touch.location(in: view)
             force = touch.force / maximumForce!
             point = loc
-            touchF.data.append(force)
             touchX.data.append((point?.x)!)
             touchY.data.append((point?.y)!)
+            touchF.data.append(force)
             touchTime.append(Common.nowTime())
             
             sCount = touchF.data.count
@@ -90,9 +90,9 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
             let loc = touch.location(in: view)
             force = touch.force / maximumForce!
             point = loc
-            touchF.data.append(force)
             touchX.data.append((point?.x)!)
             touchY.data.append((point?.y)!)
+            touchF.data.append(force)
             touchTime.append(Common.nowTime())
             
             sCount = touchF.data.count
@@ -117,6 +117,7 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
         }
     }
     
+    /* タッチのキャンセル */
     override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesCancelled(touches, with: event)
         
@@ -129,6 +130,4 @@ class ForceTouchGestureRecognizer: UIGestureRecognizer {
         
         //        print("cancel")
     }
-    
 }
-
