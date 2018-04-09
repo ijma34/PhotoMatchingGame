@@ -19,6 +19,7 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
     var targetImageNum: Int!        //ターゲット画像のインデックス番号
     var judge: Bool!                //選択画像の正誤判定
     var selectedImage: UIImage?     //タップで選択した画像
+    var unwindFlag: Bool = false    //戻る遷移のフラグ、Checkから戻ってきた時にtrue
     
     
     /* 以下メインプログラム */
@@ -33,13 +34,19 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
         //collectionviewとviewにジェスチャーを実装
         collectionView.addGestureRecognizer(forceTouchRecognizer)
         view.addGestureRecognizer(forceTouchRecognizer)
-
-        // 画像を100回シャッフル
-        for _ in 1...100 {
-            Common.shuffleImage()
+        
+        if(!unwindFlag){
+            // 画像を100回シャッフル
+            for _ in 1...100 {
+                Common.shuffleImage()
+            }
+            // ゲームカウントを加算
+            gameCount += 1
         }
-        setTarget()             // ターゲット画像を設定
-        gameCount += 1          // ゲームカウントを加算
+        // ターゲット画像を設定
+        setTarget()
+        // ゲームカウントの表示
+        unwindFlag = false
     }
     
     
@@ -118,9 +125,15 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
     
     /* ターゲット画像を設定 */
     func setTarget(){
-        targetImageNum = Int(arc4random_uniform(100))                           // 乱数生成
+        if(!unwindFlag){
+            targetImageNum = Int(arc4random_uniform(100))                           // 乱数生成
+        }
         targetImage.image = UIImage(named: imageNameArray[targetImageNum])      // ターゲットの画像を表示
     }
+    
+//    @IBAction func unwindToAuth(segue: UIStoryboardSegue) {
+//
+//    }
 //
 //    /* タップジェスチャー */
 //    @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
@@ -185,6 +198,8 @@ class Auth: UIViewController, UICollectionViewDataSource, UICollectionViewDelega
             AuthCheckVC.Img = selectedImage
             // 正解不正解の情報を伝える
             AuthCheckVC.correct = judge
+            // 正解画像の番号を伝える
+            AuthCheckVC.targetImageNum = targetImageNum
         }
     }
 

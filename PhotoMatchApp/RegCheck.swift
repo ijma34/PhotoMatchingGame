@@ -18,6 +18,7 @@ class RegCheck: UIViewController {
     /* 変数、定数などの準備 */
     var Img: UIImage!   //選択画像
     var correct: Bool!  //選択画像の正誤情報
+    var targetImageNum: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class RegCheck: UIViewController {
     /* 戻るボタンをタップした時の動作 */
     @objc func tapBackHandler(_ sender: UITapGestureRecognizer) {
         print("戻る")
-        self.dismiss(animated: false, completion: nil)   // 前画面へ
+        performSegue(withIdentifier: "toRegVC", sender: nil)      //前の画面へ
     }
     
     /* Segue準備 */
@@ -54,6 +55,11 @@ class RegCheck: UIViewController {
         if(segue.identifier == "toRegAnsVC"){
             let RegAnsVC: RegAns = (segue.destination as? RegAns)!
             RegAnsVC.correct = correct    // 正解不正解の情報を伝える
+        }
+        if(segue.identifier == "toRegVC"){
+            let RegVC: Reg = (segue.destination as? Reg)!
+            RegVC.targetImageNum = targetImageNum   // 正解不正解の情報を伝える
+            RegVC.unwindFlag = true                 // 前の画面にフラグを立てる
         }
     }
     

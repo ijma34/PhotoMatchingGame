@@ -21,7 +21,7 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
     var judge: Bool!                //選択画像の正誤判定
     var selectedImage: UIImage?     //タップで選択した画像
     var gameLabelText: String = ""  //ゲーム回数を表示するテキスト
-    
+    var unwindFlag: Bool = false    //戻る遷移のフラグ、Checkから戻ってきた時にtrue
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +35,20 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
         collectionView.addGestureRecognizer(forceTouchRecognizer)
         view.addGestureRecognizer(forceTouchRecognizer)
         
-        // 画像を100回シャッフル
-        for _ in 1...100 {
-            Common.shuffleImage()
+        if(!unwindFlag){
+            // 画像を100回シャッフル
+            for _ in 1...100 {
+                Common.shuffleImage()
+            }
+            // ゲームカウントを加算
+            gameCount += 1
         }
         // ターゲット画像を設定
         setTarget()
-        // ゲームカウントを加算
-        gameCount += 1
         // ゲームカウントの表示
         gameLabelText = String(gameCount) + " / 7 "
         gameLabel.text = gameLabelText
+        unwindFlag = false
     }
     
     /* コレクションビュー上でドラッグ開始 */
@@ -123,30 +126,36 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
     
     /* ターゲット画像を設定 */
     func setTarget(){
-        targetImageNum = Int(arc4random_uniform(100))                           // 乱数生成
+        if(!unwindFlag){
+            targetImageNum = Int(arc4random_uniform(100))                           // 乱数生成
+        }
         targetImage.image = UIImage(named: imageNameArray[targetImageNum])      // ターゲットの画像を表示
     }
-    //
-    //    /* タップジェスチャー */
-    //    @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
-    //        //collectionviewでの座標
-    //        let collectionLocation = sender.location(in: collectionView)
-    //
-    //        //collectionview座標からインデックスパスを入手し、インデックスパスに対応するセルを選択
-    //        if let indexPath = collectionView.indexPathForItem(at: collectionLocation) {
-    //            //画面のタッチ操作を一時停止
-    //            self.collectionView.isUserInteractionEnabled = false
-    //            self.view.isUserInteractionEnabled = false
-    //
-    //            //選択されたセル
-    //            collectionView(collectionView, didSelectItemAt: indexPath)
-    //
-    //            //画面のタッチ操作を再開
-    //            self.collectionView.isUserInteractionEnabled = true
-    //            self.view.isUserInteractionEnabled = true
-    //        }
-    //    }
-    //
+    
+//    @IBAction func unwindToReg(segue: UIStoryboardSegue) {
+//
+//    }
+    
+//        /* タップジェスチャー */
+//        @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
+//            //collectionviewでの座標
+//            let collectionLocation = sender.location(in: collectionView)
+//
+//            //collectionview座標からインデックスパスを入手し、インデックスパスに対応するセルを選択
+//            if let indexPath = collectionView.indexPathForItem(at: collectionLocation) {
+//                //画面のタッチ操作を一時停止
+////                self.collectionView.isUserInteractionEnabled = false
+////                self.view.isUserInteractionEnabled = false
+//
+//                //選択されたセル
+//                collectionView(collectionView, didSelectItemAt: indexPath)
+//
+//                //画面のタッチ操作を再開
+////                self.collectionView.isUserInteractionEnabled = true
+////                self.view.isUserInteractionEnabled = true
+//            }
+//        }
+    
     
     /* １つのセクションに含まれているセルの数を返すメソッド */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -191,6 +200,8 @@ class Reg: UIViewController, UICollectionViewDataSource, UICollectionViewDelegat
             RegCheckVC.Img = selectedImage
             // 正解不正解の情報を伝える
             RegCheckVC.correct = judge
+            // 正解画像の番号を伝える
+            RegCheckVC.targetImageNum = targetImageNum
         }
     }
     
