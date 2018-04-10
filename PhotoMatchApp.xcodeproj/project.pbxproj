@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77154C8E207CA3F1009B386F /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77154C8D207CA3F1009B386F /* UserView.swift */; };
 		772D91F7206B608A00E735D6 /* RegAns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772D91F6206B608A00E735D6 /* RegAns.swift */; };
 		77485FD72068ABEB0099AF57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77485FD62068ABEB0099AF57 /* AppDelegate.swift */; };
 		77485FD92068ABEB0099AF57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77485FD82068ABEB0099AF57 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77154C8D207CA3F1009B386F /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		772D91F6206B608A00E735D6 /* RegAns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegAns.swift; sourceTree = "<group>"; };
 		77485FD32068ABEB0099AF57 /* PhotoMatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77485FD62068ABEB0099AF57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				77BD72522069D9F8007239CE /* Reg.swift */,
 				77BD72582069DA69007239CE /* RegCheck.swift */,
 				772D91F6206B608A00E735D6 /* RegAns.swift */,
+				77154C8D207CA3F1009B386F /* UserView.swift */,
 				77BD72542069DA03007239CE /* Common.swift */,
 				77B7A50E2073836A00816812 /* ForceGesture.swift */,
 				77485FDA2068ABEB0099AF57 /* Main.storyboard */,
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77154C8E207CA3F1009B386F /* UserView.swift in Sources */,
 				77BD72572069DA5B007239CE /* AuthCheck.swift in Sources */,
 				77485FD92068ABEB0099AF57 /* ViewController.swift in Sources */,
 				77BD72592069DA69007239CE /* RegCheck.swift in Sources */,
